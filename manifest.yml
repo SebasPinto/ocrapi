@@ -6,4 +6,4 @@ applications:
   name: ocrapi
   host: ocrapi
   disk_quota: 1024M
-  buildpack: python_buildpack
+  buildpack: https://github.com/ihuston/python-conda-buildpack.git
