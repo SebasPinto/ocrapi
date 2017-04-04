@@ -14,6 +14,8 @@
 
 import os
 from flask import Flask, jsonify
+import cv2
+import scan
 
 app = Flask(__name__)
 
@@ -23,7 +25,7 @@ def Welcome():
 
 @app.route('/myapp')
 def WelcomeToMyapp():
-    return 'Welcome again to my app running on Bluemix!'
+    return 'Fenrirs Reborn'
 
 @app.route('/api/people')
 def GetPeople():
@@ -40,6 +42,11 @@ def SayHello(name):
     }
     return jsonify(results=message)
 
+@app.route('/scan')
+def ShowScan():
+    scan.ProcessImage('static/images/foto.jpg')
+    return app.send_static_file('scan.html')
+
 port = os.getenv('PORT', '5000')
 if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=int(port))
+    app.run(host='0.0.0.0', port=int(port))
