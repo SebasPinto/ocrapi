@@ -47,6 +47,10 @@ def ShowScan():
     scan.ProcessImage('static/images/foto.jpg')
     return app.send_static_file('scan.html')
 
+@app.route('/test')
+def Test():
+    return app.send_static_file('test.html')
+
 port = os.getenv('PORT', '5000')
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=int(port))
